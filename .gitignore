@@ -1,0 +1,7 @@
+migrations
+static/admin/
+media
+*.pyc
+/virtual
+local.py
+__pycache__

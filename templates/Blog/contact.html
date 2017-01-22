@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+
+<link href="{% static 'Blog/css/contact.css' %}" rel="stylesheet">
+
+<br/>
+<div class="conatiner">
+	<div class="row">
+		<div class="col-sm-4">
+			<img src="{% static 'Blog/img/email.png' %}"><br />
+			<p class="lead"> adarshmaurya7@gmail.com </p>
+		</div>
+
+		<div class="col-sm-4">
+			<img src="{% static 'Blog/img/git.png' %}"></br>
+			<p class="lead"> <a href="https://github.com/adarsh9780/">https://github.com/adarsh9780/</a></p>
+		</div>
+
+		<div class="col-sm-4">
+			<img src="{% static 'Blog/img/pho.png' %}"></br>
+			<p class="lead"> +91-8427084473 </p>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
