@@ -97,15 +97,15 @@ WSGI_APPLICATION = 'ICE.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'GhostStories$P_ICE',
-            'USER': 'GhostStories',
-            'PASSWORD': '9780@maN',
-            'HOST': 'GhostStories.mysql.pythonanywhere-services.com',
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'GhostStories$P_ICE',
+        'USER': 'GhostStories',
+        'PASSWORD': '9780@maN',
+        'HOST': 'GhostStories.mysql.pythonanywhere-services.com',
     }
+}
 
 
 # Password validation
