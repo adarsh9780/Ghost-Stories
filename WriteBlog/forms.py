@@ -5,7 +5,7 @@ class BlogForm(forms.ModelForm):
 
     class Meta:
         model = Blog
-        fields = ['title', 'text', 'image']
+        fields = ['title', 'text']
 
     def clean_author(self):
         author = self.cleaned_data.get('author')
