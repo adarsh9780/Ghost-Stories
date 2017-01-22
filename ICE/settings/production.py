@@ -30,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 SECRET_KEY = '@onqjcn651eg^&g1(kabn7+kp)0(!_gal3k+=8cjawh(jd*%-e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['GhostStories.pythonanywhere.com']
 EMAIL_USE_TLS = True

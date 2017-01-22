@@ -30,9 +30,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 SECRET_KEY = '@onqjcn651eg^&g1(kabn7+kp)0(!_gal3k+=8cjawh(jd*%-e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False   
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['GhostStories.pythonanywhere.com']
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'monk.python@gmail.com'
@@ -43,6 +43,7 @@ EMAIL_PORT = 587
 # Application definition
 
 INSTALLED_APPS = [
+# placed directly above admin , so that it use custom templates instead of django admin.
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,8 +55,12 @@ INSTALLED_APPS = [
     #CUSTOM APPS
     'Blog',
     'WriteBlog',
-    #registration
+
+    #third party apps
+    'crispy_forms',
     'registration',
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -73,7 +78,7 @@ ROOT_URLCONF = 'ICE.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -92,15 +97,15 @@ WSGI_APPLICATION = 'ICE.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'P_ICE',
-        'USER': 'root',
-        'PASSWORD': '9780@maN',
-        'HOST': '127.0.0.1',
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'GhostStories$P_ICE',
+            'USER': 'GhostStories',
+            'PASSWORD': '9780@maN',
+            'HOST': 'GhostStories.mysql.pythonanywhere-services.com',
+        }
     }
-}
 
 
 # Password validation
@@ -140,18 +145,34 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# django will look for these directiories along with looking in each app for static files.
+# this is where weare going to store our static files.
+STATICFILES_DIRS = [
+# our static files will be stored at /Static/OurStatic/next
+    os.path.join(BASE_DIR, "Blog", "Static"),
+    os.path.join(BASE_DIR, "WriteBlog", "Static"),
+        
+]
+
+# collectstatic command will move all static folders in this directory.
+# server will look for this directory.
+# root(admin) static files will be saved at /Static/RootStatic
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'Static')
 
 
 #MEDIA
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'Static', "Media")
 
-#dajngo registration settings
+#django registration settings
 REGISTARTION_OPEN = True # if true users can register.
-ACCOUNT_ACTIVATION_DAYS = 4#number of days within which user can activate account.
+ACCOUNT_ACTIVATION_DAYS = 4 # number of days within which user can activate account.
 REGISTARTION_AUTO_LOGIN = True # if true users will be automatically logged in.
-LOGIN_REDIRECT_URL = '/home' # The page you want users to arrive at after they successful log in
-LOGIN_URL = '/accounts/login/' # The page users are directed to if they are not logged in,
+LOGIN_REDIRECT_URL = '/home' # The page users will arrive at, after successful log in.
+LOGIN_URL = '/accounts/login/' # The page users are directed to, if they are not logged in.
 
 SITE_ID = 1
+
+# crispy form settings
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
