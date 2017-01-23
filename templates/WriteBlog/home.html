@@ -45,13 +45,12 @@
 </nav><br />
 
     {% for data in blog %}
-        <div class='col-sm-2 col-sm-offset-5'>
-            <h1><strong>{{ data.title }}</strong></h1><br/>
-        </div>
-        
         <div class="col-sm-10 col-sm-offset-1 container-fluid ">
+            <h1><strong>{{ data.title }}</strong></h1><br/>
+            <p class="lead">{{ data.timestamp }}</p>
+            <p >{{ data.timestamp|timesince }} ago</p>
             <div class='jumbotron' style="text-align: left">
-                <p class="lead">{{ data.text|linebreaksbr }}</p>
+                <p >{{ data.text|linebreaksbr }}</p>
             </div>
         </div>
 

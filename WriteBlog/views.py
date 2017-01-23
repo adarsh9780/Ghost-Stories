@@ -11,7 +11,7 @@ class ViewBlog(View):
         form = BlogForm()
         
         # if request.user.is_authenticated():
-        blog = Blog.objects.all()
+        blog = Blog.objects.all().order_by('-timestamp')
 
         context = {
             'form': form,
