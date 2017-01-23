@@ -50,7 +50,7 @@
             <p class="lead">{{ data.timestamp }}</p>
             <p >{{ data.timestamp|timesince }} ago</p>
             <div class='jumbotron' style="text-align: left">
-                <p >{{ data.text|linebreaksbr }}</p>
+                <p >{{ data.text|safe|linebreaksbr }}</p>
             </div>
         </div>
 
