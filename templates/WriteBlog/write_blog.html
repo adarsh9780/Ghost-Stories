@@ -6,7 +6,7 @@
 
 {% block main %}
     
-    {% include "navbar.html" %}
+    {% include "navbar.html" %}</hr>
 
     <form method="POST" action='{% url "WriteBlog:home" %}' enctype='multipart/form-data'>{% csrf_token %}
 

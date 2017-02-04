@@ -9,7 +9,7 @@ class BlogAuthor(models.Model):
         return self.name
 
 class BlogContent(models.Model):
-    author = models.ForeignKey(BlogAuthor, default=1, on_delete=models.CASCADE, related_name = 'blog')
+    author = models.ForeignKey(BlogAuthor, default=1, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     image = models.ImageField(null=True, blank=True)
     text = models.TextField()
