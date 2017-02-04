@@ -5,37 +5,11 @@
 {% load static %}
 
 {% block main %}
+    
+    {% include "navbar.html" %}
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="True">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">Ghost Stories</a>
-    </div>
+    <form method="POST" action='{% url "WriteBlog:home" %}' enctype='multipart/form-data'>{% csrf_token %}
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-            <li role="presentation" class=""><a href="{% url 'home' %}"><strong>Home</strong></a></li>
-            <li><a href=""><span class="glyphicon glyphicon-user"></span><strong>Welcome {{ request.user }}</strong></a></li>
-            <li><a href="/accounts/logout"><span class="glyphicon glyphicon-log-out"></span><strong>LogOut</strong></a></li>
-            <li role="presentation"><a href="{% url 'about' %}"><strong>About</strong></a></li>
-            <li role="presentation"><a href="{% url 'contact' %}"><strong>Contact</strong></a></li>
-      </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav></br></br>
-
-    <form method="POST", action='{% url "home" %}' enctype='multipart/form-data'>{% csrf_token %}
-        
         <div class='col-sm-4 col-sm-offset-4'>
             {{ form.title|as_crispy_field }}<br/><!-- as_crispy_field is used for subfield-->
         </div>
@@ -51,4 +25,3 @@
     </form>
 
 {% endblock %}
-

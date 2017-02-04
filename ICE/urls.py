@@ -14,27 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from django.conf import settings
-from django.conf.urls.static import static
 from django.contrib import admin
-from Blog.views import  IndexPage, Contact, About
-from WriteBlog.views import ViewBlog, WriteBlog
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    # Custom Url
-    url(r'^$', IndexPage.as_view()),
-    url(r'^writeblog/$', WriteBlog.as_view(), name="writeblog"),
-    url(r'^home/$', ViewBlog.as_view(), name='home'),
-    url(r'^about/$', About.as_view(), name="about"),
-    url(r'^contact/$', Contact.as_view(), name="contact"),
+    # Blog Urls
+    url(r'^', include('Blog.urls')),
+    # Write Blog Urls
+    url(r'^WriteBlog/', include('WriteBlog.urls')),
     # registration
     url(r'^accounts/', include('registration.backends.default.urls')),
-
 ]
-
-# for development purpose only
-# django dev. server will serve static files using below urlpatterns.
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

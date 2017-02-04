@@ -10,11 +10,11 @@ class IndexPage(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'Blog/index.html', {})
 
-class About(View):
+class AboutPage(View):
     def get(self, request, *args, **kwargs):
         return render(request, "Blog/about.html", {})
 
-class Contact(View):
+class ContactPage(View):
 
     def get(self, request, *args, **kwargs):
         return render(request, "Blog/contact.html", {})
